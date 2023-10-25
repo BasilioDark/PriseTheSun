@@ -17,12 +17,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Usuario findByNome(String nome);
     
 
-    // Exemplo 2: Encontrar todos os usuários que são administradores
-    List<Usuario> findByTipoUsuario(String tipoUsuario);
-
-    // Exemplo 3: Encontrar todos os organizadores de eventos
-
-
-
-    // Você pode adicionar mais métodos personalizados conforme necessário.
+    // Exemplo 2: Encontrar todos os usuários que são administradore
 }

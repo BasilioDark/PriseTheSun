@@ -22,8 +22,5 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    // Método para encontrar usuários por tipo de usuário
-    public List<Usuario> encontrarPorTipoUsuario(String tipoUsuario) {
-        return usuarioRepository.findByTipoUsuario(tipoUsuario);
-    }
+
 }
