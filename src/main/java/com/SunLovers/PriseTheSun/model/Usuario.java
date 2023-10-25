@@ -12,8 +12,8 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private String nome;
-    //private String Senha; // verificar possibilidade de criptografar
+    private String nome;
+    private String Senha; // verificar possibilidade de criptografar
 
     // Getters e Setters
 }
