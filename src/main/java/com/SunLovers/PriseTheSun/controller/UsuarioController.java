@@ -26,7 +26,7 @@ public class UsuarioController {
 
     // Endpoint para cadastrar um novo usuário comum
     
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrarUsuario")
     public ResponseEntity<String> cadastrarUsuario(
             @RequestParam(required = true) String nome,
             @RequestParam(required = true) String senha,

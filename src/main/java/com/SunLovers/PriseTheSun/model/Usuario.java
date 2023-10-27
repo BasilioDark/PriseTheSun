@@ -44,6 +44,7 @@ public class Usuario implements Serializable {
     public Long getId() {
         return id;
     }
+
     public String getNome() {
         return nome;
     }
@@ -83,6 +84,7 @@ public class Usuario implements Serializable {
     public void setFiliacao(String filiacao) {
         this.filiacao = filiacao;
     }
+
     public void atualizarUsuario(String nome, String senha, String cpf, String email, String filiacao) {
         if (nome != null && !nome.isEmpty()) {
             this.nome = nome;
@@ -108,7 +110,8 @@ public class Usuario implements Serializable {
 
     // Método para atualizar informações do usuário
 
-    // Método para criptografar a senha (você pode implementar isso usando bibliotecas de criptografia)
+    // Método para criptografar a senha (você pode implementar isso usando
+    // bibliotecas de criptografia)
     public void criptografarSenha() {
         // Implemente a lógica para criptografar a senha aqui
     }

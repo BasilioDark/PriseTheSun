@@ -1,5 +1,4 @@
 package com.SunLovers.PriseTheSun.service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.SunLovers.PriseTheSun.Repository.UsuarioRepository;
@@ -7,7 +6,7 @@ import com.SunLovers.PriseTheSun.model.Usuario;
 
 @Service
 public class UsuarioService {
-    @Autowired
+    
     private final UsuarioRepository usuarioRepository;
 
     
