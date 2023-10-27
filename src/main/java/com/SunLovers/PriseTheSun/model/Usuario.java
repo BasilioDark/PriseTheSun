@@ -2,6 +2,7 @@ package com.SunLovers.PriseTheSun.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Usuario implements Serializable {
     private Long id;
     private String nome;
     private String senha;
+    @Column(unique = true)
     private String cpf;
     private String email;
     private String filiacao;

@@ -1,4 +1,4 @@
-package com.SunLovers.PriseTheSun.controllers;
+package com.SunLovers.PriseTheSun.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +25,7 @@ public class UsuarioController {
     }
 
     // Endpoint para cadastrar um novo usuário comum
+    
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrarUsuario(
             @RequestParam(required = true) String nome,
