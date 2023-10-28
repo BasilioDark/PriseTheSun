@@ -10,4 +10,5 @@ import com.SunLovers.PriseTheSun.model.Evento;
 public interface EdicaoRepository extends JpaRepository<Edicao, Long> {
 
     List<Edicao> findByEvento(Evento evento);
+    boolean existsByEventoAndAno(Evento evento, int ano);
 }

@@ -41,8 +41,9 @@ public class EdicaoService {
     public void deletarEdicao(Long id) {
         edicaoRepository.deleteById(id);
     }
-
-
+    public boolean verificarExistenciaEdicaoPorAnoEEvento(Evento evento, int ano) {
+        return edicaoRepository.existsByEventoAndAno(evento, ano);
+    }
     public List<Edicao> listarEdicoesDeEvento(Evento evento) {
         return edicaoRepository.findByEvento(evento);
     }
