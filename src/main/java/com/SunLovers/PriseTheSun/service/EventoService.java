@@ -1,5 +1,7 @@
 package com.SunLovers.PriseTheSun.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import com.SunLovers.PriseTheSun.Repository.EventoRepository;
 import com.SunLovers.PriseTheSun.model.Evento;
@@ -20,5 +22,9 @@ public class EventoService {
 
     public boolean eventoExiste(String nome) {
         return eventoRepository.existsByNome(nome);
+    }
+
+     public Optional<Evento> getEvento(int id){
+        return eventoRepository.findById((long)id);
     }
 }

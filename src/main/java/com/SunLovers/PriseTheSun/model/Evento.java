@@ -2,6 +2,7 @@ package com.SunLovers.PriseTheSun.model;
 
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.ArrayList;
 @Entity
 @Table(name = "Evento")
 public class Evento {
@@ -9,14 +10,8 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "nome")
     private String nome;
-
-    @Column(name = "sigla")
     private String sigla;
-
-    @Column(name = "descricao")
     private String descricao;
 
     // Relacionamento OneToMany com Edicao
@@ -27,7 +22,46 @@ public class Evento {
         this.nome = nome;
         this.sigla = sigla;
         this.descricao = descricao;
+        this.edicoes = new ArrayList<>(); 
+    }
+    public Evento() {
+        // Construtor padrão sem argumentos
+    }   
+    public Long getId() {
+        return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    // Métodos get e set para a lista de Edicao
+    public List<Edicao> getEdicoes() {
+        return edicoes;
+    }
+
+    public void setEdicoes(List<Edicao> edicoes) {
+        this.edicoes = edicoes;
+    }
+
+    public void atualizar(String nome, String sigla, String descricao) {
+        if (nome != null && !nome.isEmpty()) {
+            this.nome = nome;
+        }
+        if (sigla != null && !sigla.isEmpty()) {
+            this.sigla = sigla;
+        }
+        if (descricao != null && !descricao.isEmpty()) {
+            this.descricao = descricao;
+        }
+    }
     // Getters and setters
 }
