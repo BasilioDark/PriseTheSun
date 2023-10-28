@@ -12,7 +12,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
 
@@ -44,6 +44,10 @@ public class Usuario implements Serializable {
     public Long getId() {
         return id;
     }
+       public void setId(long id) {
+        this.id = id;
+    }
+
 
     public String getNome() {
         return nome;

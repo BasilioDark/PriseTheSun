@@ -1,4 +1,6 @@
 package com.SunLovers.PriseTheSun.service;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.SunLovers.PriseTheSun.Repository.UsuarioRepository;
@@ -24,8 +26,8 @@ public class UsuarioService {
         return usuarioRepository.existsByCpf(cpf);
     }
     //recuperar usuario
-    public Usuario getUsuario(String nome) {
-        return usuarioRepository.findByCpf(nome);
+     public Optional<Usuario> getUsuario(long id) {
+        return usuarioRepository.findById(id);
     }
 
 

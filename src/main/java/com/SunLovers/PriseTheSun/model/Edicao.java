@@ -19,6 +19,9 @@ public class Edicao {
     @ManyToOne
     @JoinColumn(name = "evento_id")
     private Evento evento;
+    @ManyToOne
+    @JoinColumn(name = "organizador_id")
+    private Organizador organizador;
 
     public Edicao(int numero, int ano, LocalDate dataInicial, LocalDate dataFinal, String cidade, Evento evento) {
         this.numero = numero;

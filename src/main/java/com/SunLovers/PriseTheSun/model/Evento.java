@@ -15,7 +15,7 @@ public class Evento {
     private String descricao;
 
     // Relacionamento OneToMany com Edicao
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Edicao> edicoes;
 
     public Evento(String nome, String sigla, String descricao) {
