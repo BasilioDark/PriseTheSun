@@ -30,7 +30,7 @@ public class EdicaoController {
         this.eventoService = eventoService;
     }
 
-    @PostMapping("/adicionarEdicao")
+    @PostMapping("/cadastrarEdicao")
     public ResponseEntity<String> criarEdicaoParaEvento(
             @PathVariable int eventoId,
             @RequestParam(required = true) int numero,
