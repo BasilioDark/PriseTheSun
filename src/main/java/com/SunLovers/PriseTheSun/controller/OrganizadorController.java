@@ -1,8 +1,11 @@
 package com.SunLovers.PriseTheSun.controller;
-import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.SunLovers.PriseTheSun.model.Organizador;
 import com.SunLovers.PriseTheSun.model.Usuario;
 import com.SunLovers.PriseTheSun.service.OrganizadorService;
@@ -21,16 +24,12 @@ public class OrganizadorController {
     }
 
     @PostMapping("/{usuarioId}/tornar-organizador")
-    public ResponseEntity<String> tornarUsuarioOrganizador(@PathVariable Long usuarioId) {
-        System.err.println("Ocontrol 1");
-        Optional<Usuario> optionalUsuario = usuarioService.getUsuario(usuarioId);
-        System.err.println("Ocontrol 2");
-        Usuario usuario = optionalUsuario.orElseThrow(() -> new RuntimeException("Usuário não encontrado, id: " + usuarioId));
-        System.err.println("Ocontrol 3");
+    public ResponseEntity<String> tornarUsuarioOrganizador(@PathVariable Long usuarioId) throws Exception {
+        Usuario usuario = usuarioService.getUsuario(usuarioId);
         Organizador organizador = new Organizador(usuario);
-        System.err.println("Ocontrol 4");
-        organizadorService.salvarOrganizador(organizador,usuario);
-System.err.println("Ocontrol 5");
+        if (organizadorService.TransformarEmOrganizador(organizador,usuario)){
         return ResponseEntity.status(HttpStatus.OK).body("Usuário transformado em Organizador com sucesso");
+        };
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Já é organizador ou nao existe usuario");
     }
 }

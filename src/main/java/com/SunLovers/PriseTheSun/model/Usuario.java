@@ -18,13 +18,24 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "senha")
     private String senha;
-    @Column(unique = true)
+
+    @Column(name = "cpf", unique = true)
     private String cpf;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "filiacao")
     private String filiacao;
+
 
     // Construtor vazio
     public Usuario() {

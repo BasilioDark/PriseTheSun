@@ -1,5 +1,5 @@
 package com.SunLovers.PriseTheSun.service;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,12 @@ public class UsuarioService {
     }
     // Método para cadastrar um novo usuário
     public Usuario cadastrarUsuario(Usuario usuario) {
-        // Aqui você pode adicionar lógica de validação ou outras operações, se necessário,
-        // antes de salvar o usuário no banco de dados.
+        // Implemente a lógica de validação ou criptografia da senha, se necessário
+        // Exemplo de validação de CPF duplicado:
+        if (usuarioRepository.existsByCpf(usuario.getCpf())) {
+            throw new RuntimeException("CPF já está em uso!");
+        }
+        
         return usuarioRepository.save(usuario);
     }
     // verificar  se o usuario existe
@@ -26,8 +30,11 @@ public class UsuarioService {
         return usuarioRepository.existsByCpf(cpf);
     }
     //recuperar usuario
-     public Optional<Usuario> getUsuario(long id) {
-        return usuarioRepository.findById(id);
+     public Usuario getUsuario(long id) {
+        return usuarioRepository.getReferenceById(id);
+    }
+    public List<Usuario> obterTodosUsuarios() {
+        return usuarioRepository.findAll();
     }
 
 

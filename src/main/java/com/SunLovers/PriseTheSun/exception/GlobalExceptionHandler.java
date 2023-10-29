@@ -1,4 +1,4 @@
-package com.exception;
+package com.SunLovers.PriseTheSun.exception;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

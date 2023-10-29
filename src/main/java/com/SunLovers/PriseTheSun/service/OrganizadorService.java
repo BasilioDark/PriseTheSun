@@ -1,14 +1,12 @@
 package com.SunLovers.PriseTheSun.service;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.SunLovers.PriseTheSun.Repository.OrganizadorRepository;
 import com.SunLovers.PriseTheSun.Repository.UsuarioRepository;
 import com.SunLovers.PriseTheSun.model.Organizador;
 import com.SunLovers.PriseTheSun.model.Usuario;
-
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrganizadorService {
@@ -20,14 +18,16 @@ public class OrganizadorService {
         this.organizadorRepository = organizadorRepository;
         this.usuarioRepository = usuarioRepository;
     }
-    @Transactional
-    public Organizador salvarOrganizador(Organizador organizador,Usuario usuario) {
-        usuarioRepository.delete(usuario);
-        return organizadorRepository.save(organizador);
+    
+    public boolean TransformarEmOrganizador(Organizador organizador,Usuario usuario) throws Exception {
+        if(organizadorRepository.existsById(usuario.getId())&&!usuarioRepository.existsById(usuario.getId()))
+        {return false;}
+            organizadorRepository.inserirOrganizador(usuario.getId());
+        return true;
     }
 
-    public Optional<Organizador> encontrarPorId(Long id) {
-        return organizadorRepository.findById(id);
+    public Organizador encontrarPorId(Long id) {
+        return organizadorRepository.getReferenceById(id);
     }
 
     public List<Organizador> encontrarTodosOrganizadores() {

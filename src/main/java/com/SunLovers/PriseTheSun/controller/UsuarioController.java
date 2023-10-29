@@ -1,11 +1,16 @@
 package com.SunLovers.PriseTheSun.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.SunLovers.PriseTheSun.dto.UsuarioDTO;
 import com.SunLovers.PriseTheSun.model.Usuario;
 import com.SunLovers.PriseTheSun.service.UsuarioService;
 
@@ -23,21 +28,33 @@ public class UsuarioController {
 
     // Endpoint para cadastrar um novo usuário comum
     
-    @PostMapping("/cadastrarUsuario")
-    public ResponseEntity<String> cadastrarUsuario(
-            @RequestParam(required = true) String nome,
-            @RequestParam(required = true) String senha,
-            @RequestParam(required = true) String cpf,
-            @RequestParam(required = true) String email,
-            @RequestParam(required = true) String filiacao) {
-        // Verifica se o usuário já existe (pode ser feita uma lógica de verificação aqui)
-        if (usuarioService.usuarioExiste(cpf)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário já existe!");
+    @PostMapping("/cadastrar")
+    public ResponseEntity<String> criarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        
+        try {
+            Usuario usuario = new Usuario();
+            System.out.println("INIIIIIIIIIICIO DEBUG");
+            System.err.println(usuarioDTO.toString());
+            usuario.setNome(usuarioDTO.getNome());
+            usuario.setCpf(usuarioDTO.getCpf());
+            usuario.setEmail(usuarioDTO.getEmail());
+            usuario.setFiliacao(usuarioDTO.getFiliacao());
+            usuario.setSenha(usuarioDTO.getSenha());
+
+            Usuario usuarioCadastrado = usuarioService.cadastrarUsuario(usuario);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso! ID: " + usuarioCadastrado.getId());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/todosUsuarios")
+    public ResponseEntity<List<Usuario>> obterTodosUsuarios() {
+        List<Usuario> usuarios = usuarioService.obterTodosUsuarios();
+        if (usuarios.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {
-            Usuario usuario = new Usuario(nome,senha,cpf,email,filiacao);
-            // Se o usuário não existe, cadastra o usuário
-            usuarioService.cadastrarUsuario(usuario);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso!");
+            return ResponseEntity.status(HttpStatus.OK).body(usuarios);
         }
     }
 

@@ -2,7 +2,10 @@ package com.SunLovers.PriseTheSun.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name="id")
@@ -13,7 +16,7 @@ public class Organizador extends Usuario {
     public Organizador(Usuario usuario) {
         super(usuario.getNome(), usuario.getSenha(), usuario.getCpf(), usuario.getEmail(), usuario.getFiliacao());
         super.setId(usuario.getId());
-        System.out.println(this.getId());
+        System.out.println(usuario.getNome());
     }
     // Propriedades específicas do organizador
 }

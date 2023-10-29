@@ -1,8 +1,15 @@
 package com.SunLovers.PriseTheSun.model;
 
-import jakarta.persistence.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 @Entity
 @Table(name = "Evento")
 public class Evento {
@@ -24,9 +31,7 @@ public class Evento {
         this.descricao = descricao;
         this.edicoes = new ArrayList<>(); 
     }
-    public Evento() {
-        // Construtor padrão sem argumentos
-    }   
+    public Evento() {}   
     public Long getId() {
         return id;
     }
