@@ -19,9 +19,10 @@ public class OrganizadorService {
         this.usuarioRepository = usuarioRepository;
     }
     
-    public boolean TransformarEmOrganizador(Organizador organizador,Usuario usuario) throws Exception {
-        if(organizadorRepository.existsById(usuario.getId())&&!usuarioRepository.existsById(usuario.getId()))
+    public boolean TransformarEmOrganizador(Organizador organizador,Usuario usuario) {
+        if(organizadorRepository.existsById(usuario.getId())&&!usuarioRepository.existsById(organizador.getId()))
         {return false;}
+        System.out.println("chueguei aqxd");
             organizadorRepository.inserirOrganizador(usuario.getId());
         return true;
     }

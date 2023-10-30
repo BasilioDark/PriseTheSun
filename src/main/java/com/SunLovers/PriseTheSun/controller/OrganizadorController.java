@@ -24,9 +24,11 @@ public class OrganizadorController {
     }
 
     @PostMapping("/{usuarioId}/tornar-organizador")
-    public ResponseEntity<String> tornarUsuarioOrganizador(@PathVariable Long usuarioId) throws Exception {
+    public ResponseEntity<String> tornarUsuarioOrganizador(@PathVariable Long usuarioId) {
         Usuario usuario = usuarioService.getUsuario(usuarioId);
         Organizador organizador = new Organizador(usuario);
+        System.out.println("LOG start");
+        System.out.println(organizador.getId());
         if (organizadorService.TransformarEmOrganizador(organizador,usuario)){
         return ResponseEntity.status(HttpStatus.OK).body("Usuário transformado em Organizador com sucesso");
         };

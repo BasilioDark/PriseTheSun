@@ -10,8 +10,10 @@ import com.SunLovers.PriseTheSun.model.Organizador;
 
 @Repository
 public interface OrganizadorRepository extends JpaRepository<Organizador, Long> {
-
     @Modifying
-    @Query("INSERT INTO Organizador SELECT u.id FROM Usuario u WHERE u.id = :usuarioId")
-    void inserirOrganizador(@Param("usuarioId") long usuarioId);
+    @Query(
+      value =   
+        "insert into organizador values (:id)",
+      nativeQuery = true)
+    void inserirOrganizador(@Param("id") long id);
 }
