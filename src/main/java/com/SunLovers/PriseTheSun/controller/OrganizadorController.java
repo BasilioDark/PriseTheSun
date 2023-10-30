@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.SunLovers.PriseTheSun.model.Organizador;
 import com.SunLovers.PriseTheSun.model.Usuario;
 import com.SunLovers.PriseTheSun.service.OrganizadorService;
 import com.SunLovers.PriseTheSun.service.UsuarioService;
@@ -26,10 +24,8 @@ public class OrganizadorController {
     @PostMapping("/{usuarioId}/tornar-organizador")
     public ResponseEntity<String> tornarUsuarioOrganizador(@PathVariable Long usuarioId) {
         Usuario usuario = usuarioService.getUsuario(usuarioId);
-        Organizador organizador = new Organizador(usuario);
         System.out.println("LOG start");
-        System.out.println(organizador.getId());
-        if (organizadorService.TransformarEmOrganizador(organizador,usuario)){
+        if (organizadorService.TransformarEmOrganizador(usuario)){
         return ResponseEntity.status(HttpStatus.OK).body("Usuário transformado em Organizador com sucesso");
         };
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Já é organizador ou nao existe usuario");
