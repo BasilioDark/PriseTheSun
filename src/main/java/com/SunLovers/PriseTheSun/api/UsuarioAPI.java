@@ -18,12 +18,12 @@ import com.SunLovers.PriseTheSun.service.UsuarioService;
 
 @RestController
 @RequestMapping("/api/usuario")
-public class UsuarioController {
+public class UsuarioAPI {
 
     private final UsuarioService usuarioService;
 
     
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioAPI(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 

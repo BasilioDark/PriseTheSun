@@ -11,12 +11,12 @@ import com.SunLovers.PriseTheSun.service.UsuarioService;
 
 @RestController
 @RequestMapping("/api/organizador")
-public class OrganizadorController {
+public class OrganizadorAPI {
 
     private final UsuarioService usuarioService;
     private final OrganizadorService organizadorService;
 
-    public OrganizadorController(UsuarioService usuarioService, OrganizadorService organizadorService) {
+    public OrganizadorAPI(UsuarioService usuarioService, OrganizadorService organizadorService) {
         this.usuarioService = usuarioService;
         this.organizadorService = organizadorService;
     }
