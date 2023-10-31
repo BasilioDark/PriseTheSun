@@ -31,7 +31,7 @@ public class UsuarioService {
     }
     //recuperar usuario
      public Usuario getUsuario(long id) {
-        return usuarioRepository.getReferenceById(id);
+        return usuarioRepository.findById(id).orElse(null);
     }
     public List<Usuario> obterTodosUsuarios() {
         return usuarioRepository.findAll();

@@ -12,7 +12,7 @@ import com.SunLovers.PriseTheSun.model.Evento;
 import com.SunLovers.PriseTheSun.service.EventoService;
 
 @RestController
-@RequestMapping("/eventos")
+@RequestMapping("/evento")
 public class EventoAPI {
     private final EventoService eventoService;
 

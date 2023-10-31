@@ -9,7 +9,7 @@ import com.SunLovers.PriseTheSun.model.Evento;
 import jakarta.validation.ConstraintViolationException;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class EdicaoService {
@@ -30,8 +30,8 @@ public class EdicaoService {
         }
     }
 
-    public Optional<Edicao> buscarPorId(Long id) {
-        return edicaoRepository.findById(id);
+    public Edicao buscarPorId(Long id) {
+        return edicaoRepository.findById(id).orElse(null);
     }
 
     public List<Edicao> listarTodasEdicoes() {

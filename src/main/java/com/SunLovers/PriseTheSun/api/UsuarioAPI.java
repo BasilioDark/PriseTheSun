@@ -28,7 +28,6 @@ public class UsuarioAPI {
     }
 
     // Endpoint para cadastrar um novo usuário comum
-    
     @PostMapping("/cadastrar")
     public ResponseEntity<String> criarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         

@@ -49,7 +49,10 @@ public class Usuario implements Serializable {
         this.email = email;
         this.filiacao = filiacao;
     }
-
+    public Usuario(Usuario usuario) {
+        this(usuario.getNome(), usuario.getSenha(), usuario.getCpf(), usuario.getEmail(), usuario.getFiliacao());
+        this.id = usuario.getId();
+    }
     // Getters e Setters
 
     public Long getId() {

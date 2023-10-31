@@ -1,42 +1,41 @@
 package com.SunLovers.PriseTheSun.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.SunLovers.PriseTheSun.Repository.OrganizadorRepository;
-import com.SunLovers.PriseTheSun.Repository.UsuarioRepository;
-import com.SunLovers.PriseTheSun.model.Organizador;
-import com.SunLovers.PriseTheSun.model.Usuario;
+import com.SunLovers.PriseTheSun.model.Organizador; 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 
 @Service
 public class OrganizadorService {
 
     private final OrganizadorRepository organizadorRepository;
-    private final UsuarioRepository usuarioRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public OrganizadorService(OrganizadorRepository organizadorRepository,UsuarioRepository usuarioRepository) {
+    public OrganizadorService(OrganizadorRepository organizadorRepository) {
         this.organizadorRepository = organizadorRepository;
-        this.usuarioRepository = usuarioRepository;
     }
     @Transactional
-    public boolean TransformarEmOrganizador(Usuario usuario) {
-        
-        if(!usuarioRepository.existsById(usuario.getId()))
-        {return false;}
-
-        //EntityManager necessario para modificar especialidade de Usuario
+    public boolean TransformarEmOrganizador(long id) {
+        try {
+        System.out.println("teste");
             entityManager.createNativeQuery("INSERT INTO organizador (ID) VALUES (?)")
-            .setParameter(1, usuario.getId())
+            .setParameter(1, id)
             .executeUpdate();
+            Thread.sleep(3000);
+        }
+         catch (Exception e) {
+            return false;
+         }
+        
         return true;
     }
 
-    public Organizador encontrarPorId(Long id) {
-        return organizadorRepository.getReferenceById(id);
+    public Organizador getOrganizador(Long id) {
+        return organizadorRepository.findById(id).orElse(null);
     }
 
     public List<Organizador> encontrarTodosOrganizadores() {
@@ -46,6 +45,10 @@ public class OrganizadorService {
     public void deletarOrganizador(Long id) {
         organizadorRepository.deleteById(id);
     }
+    public Organizador atualizarOrganizador(Organizador organizador) {
+        return organizadorRepository.save(organizador);
+    }
+
 
     // Adicione outros métodos específicos de Organizador, se necessário
 }
