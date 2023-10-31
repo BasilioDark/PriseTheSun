@@ -1,4 +1,4 @@
-package com.SunLovers.PriseTheSun.controller;
+package com.SunLovers.PriseTheSun.api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,5 @@
-package com.SunLovers.PriseTheSun.controller;
+
+package com.SunLovers.PriseTheSun.api;
 
 import java.util.List;
 

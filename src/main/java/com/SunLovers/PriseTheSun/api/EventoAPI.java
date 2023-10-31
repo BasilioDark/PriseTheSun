@@ -1,4 +1,5 @@
-package com.SunLovers.PriseTheSun.controller;
+
+package com.SunLovers.PriseTheSun.api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,11 +13,11 @@ import com.SunLovers.PriseTheSun.service.EventoService;
 
 @RestController
 @RequestMapping("/eventos")
-public class EventoController {
+public class EventoAPI {
     private final EventoService eventoService;
 
  
-    public EventoController(EventoService eventoService) {
+    public EventoAPI(EventoService eventoService) {
         this.eventoService = eventoService;
     }
     @PostMapping("/cadastrarEvento")

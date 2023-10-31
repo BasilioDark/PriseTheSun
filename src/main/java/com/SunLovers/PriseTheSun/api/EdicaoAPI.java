@@ -1,5 +1,5 @@
 
-package com.SunLovers.PriseTheSun.controller;
+package com.SunLovers.PriseTheSun.api;
 
 import java.net.URI;
 import java.util.Optional;
@@ -22,11 +22,11 @@ import com.SunLovers.PriseTheSun.service.EventoService;
 
 @RestController
 @RequestMapping("/api/evento/{eventoId}/edicao")
-public class EdicaoController {
+public class EdicaoAPI {
     private final EdicaoService edicaoService;
     private final EventoService eventoService;
 
-    public EdicaoController(EdicaoService edicaoService, EventoService eventoService) {
+    public EdicaoAPI(EdicaoService edicaoService, EventoService eventoService) {
         this.edicaoService = edicaoService;
         this.eventoService = eventoService;
     }
