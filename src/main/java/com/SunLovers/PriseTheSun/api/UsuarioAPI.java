@@ -57,6 +57,4 @@ public class UsuarioAPI {
             return ResponseEntity.status(HttpStatus.OK).body(usuarios);
         }
     }
-
-    
 }

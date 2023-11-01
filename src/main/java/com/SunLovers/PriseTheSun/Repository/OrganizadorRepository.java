@@ -16,6 +16,4 @@ public interface OrganizadorRepository extends JpaRepository<Organizador, Long> 
     @Query(nativeQuery = true, value = "INSERT INTO organizador (ID) VALUES (:id)")
     @Transactional
     void TransformarEmOrganizador(@Param("id") Long id);
-    
-  
 }

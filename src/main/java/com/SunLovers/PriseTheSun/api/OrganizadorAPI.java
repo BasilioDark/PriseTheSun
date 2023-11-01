@@ -38,16 +38,12 @@ public class OrganizadorAPI {
         Edicao edicao = edicaoService.buscarPorId(edicaoID);
         if (edicao == null) {return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Edicao não encontrado");}
         if (edicao.getOrganizador() !=null) {return ResponseEntity.status(HttpStatus.CONFLICT).body("Evento Já Existe um Organizador");}
-        if ((organizador !=null || organizadorService.TransformarEmOrganizador(usuarioID))){
+        if ((organizador !=null || organizadorService.TransformarEmOrganizador(usuarioID,edicaoID))){
              System.out.println("passei por aqui");
-            organizador = organizadorService.getOrganizador(usuarioID);
+            return ResponseEntity.status(HttpStatus.OK).body("Evento atribuído ao organizador com sucesso");
        }
        else{return ResponseEntity.status(HttpStatus.CONFLICT).body("falhou em converter");}
-        if (organizador ==null) {return ResponseEntity.status(HttpStatus.CONFLICT).body("Falha em Transformar o Usuario em  Organizador");}
-       
-        organizador.setEdicao(edicao);
-        organizador = organizadorService.atualizarOrganizador(organizador);
-        return ResponseEntity.status(HttpStatus.OK).body("Evento atribuído ao organizador com sucesso");
+        
     }
      @GetMapping("/{organizadorID}")
     public ResponseEntity<?> getOrganizadorById(@PathVariable("organizadorID") Long organizadorID) {
