@@ -3,6 +3,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.SunLovers.PriseTheSun.Repository.OrganizadorRepository;
+import com.SunLovers.PriseTheSun.Repository.UsuarioRepository;
 import com.SunLovers.PriseTheSun.model.Organizador; 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -11,21 +12,21 @@ import jakarta.persistence.PersistenceContext;
 public class OrganizadorService {
 
     private final OrganizadorRepository organizadorRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public OrganizadorService(OrganizadorRepository organizadorRepository) {
+    public OrganizadorService(OrganizadorRepository organizadorRepository,UsuarioRepository usuarioRepository) {
         this.organizadorRepository = organizadorRepository;
+        this.usuarioRepository = usuarioRepository;
     }
     @Transactional
     public boolean TransformarEmOrganizador(long id) {
         try {
-        System.out.println("teste");
-            entityManager.createNativeQuery("INSERT INTO organizador (ID) VALUES (?)")
-            .setParameter(1, id)
-            .executeUpdate();
-            Thread.sleep(3000);
+            organizadorRepository.TransformarEmOrganizador(id);
+            //entityManager.getEntityManagerFactory().getCache().evictAll();
+            entityManager.flush();
         }
          catch (Exception e) {
             return false;

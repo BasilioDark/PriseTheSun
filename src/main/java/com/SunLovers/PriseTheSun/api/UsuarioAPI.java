@@ -35,12 +35,12 @@ public class UsuarioAPI {
             Usuario usuario = new Usuario();
             System.out.println("INIIIIIIIIIICIO DEBUG");
             System.err.println(usuarioDTO.toString());
-            usuario.setNome(usuarioDTO.getNome());
-            usuario.setCpf(usuarioDTO.getCpf());
-            usuario.setEmail(usuarioDTO.getEmail());
-            usuario.setFiliacao(usuarioDTO.getFiliacao());
-            usuario.setSenha(usuarioDTO.getSenha());
-
+            usuario.atualizarUsuario(
+                usuarioDTO.getNome(),
+                usuarioDTO.getSenha(),
+                usuarioDTO.getCpf(),
+                usuarioDTO.getEmail(),
+                usuarioDTO.getFiliacao());
             Usuario usuarioCadastrado = usuarioService.cadastrarUsuario(usuario);
             return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso! ID: " + usuarioCadastrado.getId());
         } catch (RuntimeException e) {

@@ -41,7 +41,8 @@ public class OrganizadorAPI {
         if ((organizador !=null || organizadorService.TransformarEmOrganizador(usuarioID))){
              System.out.println("passei por aqui");
             organizador = organizadorService.getOrganizador(usuarioID);
-       };
+       }
+       else{return ResponseEntity.status(HttpStatus.CONFLICT).body("falhou em converter");}
         if (organizador ==null) {return ResponseEntity.status(HttpStatus.CONFLICT).body("Falha em Transformar o Usuario em  Organizador");}
        
         organizador.setEdicao(edicao);
