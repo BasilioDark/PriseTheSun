@@ -2,9 +2,12 @@ package com.SunLovers.PriseTheSun.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.SunLovers.PriseTheSun.Repository.EdicaoRepository;
-import com.SunLovers.PriseTheSun.Repository.OrganizadorRepository;
-import com.SunLovers.PriseTheSun.model.Organizador; 
+
+import com.SunLovers.PriseTheSun.model.Organizador;
+import com.SunLovers.PriseTheSun.repository.EdicaoRepository;
+import com.SunLovers.PriseTheSun.repository.OrganizadorRepository;
+
+
 
 
 @Service

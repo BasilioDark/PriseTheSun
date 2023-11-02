@@ -1,5 +1,4 @@
-package com.SunLovers.PriseTheSun.Repository;
-
+package com.SunLovers.PriseTheSun.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;

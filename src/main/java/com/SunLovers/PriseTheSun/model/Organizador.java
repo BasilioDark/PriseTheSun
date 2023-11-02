@@ -1,8 +1,6 @@
 package com.SunLovers.PriseTheSun.model;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name="id")

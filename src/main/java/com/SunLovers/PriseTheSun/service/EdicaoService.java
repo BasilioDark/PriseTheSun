@@ -2,9 +2,10 @@ package com.SunLovers.PriseTheSun.service;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import com.SunLovers.PriseTheSun.Repository.EdicaoRepository;
+
 import com.SunLovers.PriseTheSun.model.Edicao;
 import com.SunLovers.PriseTheSun.model.Evento;
+import com.SunLovers.PriseTheSun.repository.EdicaoRepository;
 
 import jakarta.validation.ConstraintViolationException;
 

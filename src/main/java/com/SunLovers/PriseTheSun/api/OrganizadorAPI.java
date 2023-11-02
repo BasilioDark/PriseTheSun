@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.SunLovers.PriseTheSun.model.Edicao;
 import com.SunLovers.PriseTheSun.model.Organizador;
 import com.SunLovers.PriseTheSun.service.EdicaoService;
@@ -39,7 +40,7 @@ public class OrganizadorAPI {
         if (edicao == null) {return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Edicao não encontrado");}
         if (edicao.getOrganizador() !=null) {return ResponseEntity.status(HttpStatus.CONFLICT).body("Evento Já Existe um Organizador");}
         if ((organizador !=null || organizadorService.TransformarEmOrganizador(usuarioID,edicaoID))){
-             System.out.println("passei por aqui");
+            // System.out.println("passei por aqui");
             return ResponseEntity.status(HttpStatus.OK).body("Evento atribuído ao organizador com sucesso");
        }
        else{return ResponseEntity.status(HttpStatus.CONFLICT).body("falhou em converter");}

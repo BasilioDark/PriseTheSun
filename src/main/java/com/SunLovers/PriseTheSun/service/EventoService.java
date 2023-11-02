@@ -3,8 +3,11 @@ package com.SunLovers.PriseTheSun.service;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-import com.SunLovers.PriseTheSun.Repository.EventoRepository;
+
 import com.SunLovers.PriseTheSun.model.Evento;
+import com.SunLovers.PriseTheSun.repository.EventoRepository;
+
+
 
 @Service
 public class EventoService {

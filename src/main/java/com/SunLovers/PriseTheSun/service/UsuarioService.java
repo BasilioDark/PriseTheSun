@@ -3,8 +3,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.SunLovers.PriseTheSun.Repository.UsuarioRepository;
 import com.SunLovers.PriseTheSun.model.Usuario;
+import com.SunLovers.PriseTheSun.repository.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
