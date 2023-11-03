@@ -2,6 +2,7 @@ package com.SunLovers.PriseTheSun.model;
 
 import jakarta.persistence.*;
 import java.util.Date;
+
 import java.sql.Time;
 
 @Entity
@@ -35,6 +36,8 @@ public class Atividade {
     @JoinColumn(name = "edicao_id")
     private Edicao edicao;
     
+        @OneToOne(mappedBy = "atividade", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Espaco espaco;
     public Long getId() {
         return id;
     }
