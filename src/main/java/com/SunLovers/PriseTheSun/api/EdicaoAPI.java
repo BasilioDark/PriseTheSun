@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +21,11 @@ import com.SunLovers.PriseTheSun.model.Evento;
 import com.SunLovers.PriseTheSun.service.EdicaoService;
 import com.SunLovers.PriseTheSun.service.EventoService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/evento/{eventoId}/edicao")
+@Tag(name = "Edições", description = "Operações relacionadas a edições")
 public class EdicaoAPI {
     private final EdicaoService edicaoService;
     private final EventoService eventoService;
@@ -55,6 +59,24 @@ public class EdicaoAPI {
                 .buildAndExpand(eventoId, edicao.getId()) // Passe os parâmetros necessários para o caminho
                 .toUri();
         return ResponseEntity.created(location).body("Edição Cadastrada com Sucesso");
+    }
+
+    @GetMapping("/{edicaoId}")
+    public ResponseEntity<EdicaoDTO> obterDetalhesEdicao(
+            @PathVariable long eventoId,
+            @PathVariable long edicaoId) {
+        Edicao edicao = edicaoService.buscarPorId(edicaoId);
+        if (edicao == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Edição não encontrada com o ID: " + edicaoId);
+        }
+        EdicaoDTO edicaoDTO = new EdicaoDTO(
+                edicao.getNumero(),
+                edicao.getAno(),
+                edicao.getDataInicial(),
+                edicao.getDataFinal(),
+                edicao.getCidade());
+
+        return ResponseEntity.status(HttpStatus.OK).body(edicaoDTO);
     }
 
     // Implemente outros métodos conforme necessário

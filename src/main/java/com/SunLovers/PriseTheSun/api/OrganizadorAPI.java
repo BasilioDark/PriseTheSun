@@ -14,8 +14,11 @@ import com.SunLovers.PriseTheSun.service.EdicaoService;
 import com.SunLovers.PriseTheSun.service.OrganizadorService;
 import com.SunLovers.PriseTheSun.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/organizador")
+@Tag(name = "Organizadores", description = "Operações relacionadas a organizadores")
 public class OrganizadorAPI {
 
     private final UsuarioService usuarioService;

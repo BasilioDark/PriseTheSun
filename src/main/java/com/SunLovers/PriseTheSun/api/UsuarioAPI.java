@@ -13,10 +13,13 @@ import com.SunLovers.PriseTheSun.dto.UsuarioDTO;
 import com.SunLovers.PriseTheSun.model.Usuario;
 import com.SunLovers.PriseTheSun.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 
 @RestController
 @RequestMapping("/api/usuario")
+@Tag(name = "Usuarios", description = "Operações relacionadas aos usuarios")
 public class UsuarioAPI {
 
     private final UsuarioService usuarioService;

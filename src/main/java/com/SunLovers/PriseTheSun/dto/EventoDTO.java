@@ -5,17 +5,15 @@ public class EventoDTO {
     private String sigla;
     private String descricao;
 
-    // Construtores, getters e setters
-
-    @Override
-    public String toString() {
-        return "EventoDTO{" +
-                ", nome='" + nome + '\'' +
-                ", sigla='" + sigla + '\'' +
-                ", descricao='" + descricao + '\'' +
-                '}';
+    public EventoDTO() {
+        // Construtor vazio necessário para o Jackson (biblioteca de serialização/desserialização JSON)
     }
 
+    public EventoDTO(String nome, String sigla, String descricao) {
+        this.nome = nome;
+        this.sigla = sigla;
+        this.descricao = descricao;
+    }
 
     public String getNome() {
         return nome;
@@ -41,4 +39,12 @@ public class EventoDTO {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return "EventoDTO{" +
+                "nome='" + nome + '\'' +
+                ", sigla='" + sigla + '\'' +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
 }

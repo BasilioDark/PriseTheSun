@@ -2,17 +2,21 @@
 package com.SunLovers.PriseTheSun.api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.util.List;
 import com.SunLovers.PriseTheSun.dto.EventoDTO;
 import com.SunLovers.PriseTheSun.model.Evento;
 import com.SunLovers.PriseTheSun.service.EventoService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/evento")
+@Tag(name = "Eventos", description = "Operações relacionadas a eventos")
 public class EventoAPI {
     private final EventoService eventoService;
 
@@ -33,5 +37,16 @@ public class EventoAPI {
                 return ResponseEntity.status(HttpStatus.CREATED).body("Evento Cadastrado com Sucesso");
             }
         }
+    @GetMapping("/listarEventos")
+    public ResponseEntity<List<EventoDTO>> listarEventos() {
+        List<EventoDTO> eventosDTO = eventoService.listarEventos();
+
+        if (eventosDTO.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(eventosDTO);
+    }
 }
+
 

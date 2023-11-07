@@ -4,6 +4,8 @@ import com.SunLovers.PriseTheSun.model.Espaco;
 import com.SunLovers.PriseTheSun.service.EspacoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/espacos")
+@Tag(name = "Espaços", description = "Operações relacionadas aos espaços")
 public class EspacoAPI {
 
     private final EspacoService espacoService;
