@@ -143,9 +143,9 @@ public class Usuario implements Serializable {
     public boolean validarSenha(String senhaDigitada) {
         try {
              System.out.println("senha armazenada: "+Arrays.toString(this.senha));
-             System.out.println("senha digitada: "+Arrays.toString(AESCrypt.encrypt(senhaDigitada)));
-             System.out.println("resultado: "+AESCrypt.decrypt(this.senha).equals(senhaDigitada));
-            return AESCrypt.decrypt(this.senha).equals(senhaDigitada);
+             System.out.println("senha digitada:   "+Arrays.toString(AESCrypt.encrypt(senhaDigitada)));
+             System.out.println("resultado: "+Arrays.toString(AESCrypt.encrypt(senhaDigitada)).equals(Arrays.toString(this.senha)));
+            return Arrays.toString(AESCrypt.encrypt(senhaDigitada)).equals(Arrays.toString(this.senha));
         } catch (Exception e) {
             e.printStackTrace();
             return false;
