@@ -3,6 +3,7 @@ package com.SunLovers.PriseTheSun.model;
 import java.io.Serializable;
 
 import com.SunLovers.PriseTheSun.security.AESCrypt;
+import java.util.Arrays;
 
 import jakarta.persistence.*;
 
@@ -141,7 +142,10 @@ public class Usuario implements Serializable {
     // Método para validar a senha
     public boolean validarSenha(String senhaDigitada) {
         try {
-            return AESCrypt.decrypt(this.senha)==senhaDigitada;
+             System.out.println("senha armazenada: "+Arrays.toString(this.senha));
+             System.out.println("senha digitada: "+Arrays.toString(AESCrypt.encrypt(senhaDigitada)));
+             System.out.println("resultado: "+AESCrypt.decrypt(this.senha).equals(senhaDigitada));
+            return AESCrypt.decrypt(this.senha).equals(senhaDigitada);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

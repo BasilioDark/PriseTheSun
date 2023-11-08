@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.SunLovers.PriseTheSun.dto.UsuarioDTO;
 import com.SunLovers.PriseTheSun.model.Usuario;
@@ -35,8 +36,8 @@ public class UsuarioAPI {
         
         try {
             Usuario usuario = new Usuario();
-            System.out.println("INIIIIIIIIIICIO DEBUG");
-            System.err.println(usuarioDTO.toString());
+            //System.out.println("INIIIIIIIIIICIO DEBUG");
+            //System.err.println(usuarioDTO.toString());
             usuario.atualizarUsuario(
                 usuarioDTO.getNome(),
                 usuarioDTO.getSenha(),
@@ -58,5 +59,15 @@ public class UsuarioAPI {
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(usuarios);
         }
+    }
+
+     @GetMapping("/validarUsuario")
+    public ResponseEntity<String> validarUsuario(@RequestParam String cpf,@RequestParam String senha) {
+    boolean resposta = usuarioService.ValidarUsuario(cpf, senha);
+    if (resposta == true) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("login validado com sucesso");
+    }
+    else{ return ResponseEntity.status(HttpStatus.NOT_FOUND).body("login invalido");}
+        
     }
 }

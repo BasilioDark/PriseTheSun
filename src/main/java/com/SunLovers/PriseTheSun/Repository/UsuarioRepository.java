@@ -8,5 +8,6 @@ import com.SunLovers.PriseTheSun.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     boolean existsByCpf(String cpf);
+    Usuario findByCpf(String cpf);
 
 }

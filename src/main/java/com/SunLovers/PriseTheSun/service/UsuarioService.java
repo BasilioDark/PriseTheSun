@@ -38,5 +38,14 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public Boolean ValidarUsuario(String cpf,String senha) {
+        
+        if (usuarioExiste(cpf) &&usuarioRepository.findByCpf(cpf).validarSenha(senha)) {
+                return true;
+            }
+        else {
+                return false;}
+    }
+
 
 }
