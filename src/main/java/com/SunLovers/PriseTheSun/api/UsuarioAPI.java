@@ -2,6 +2,8 @@ package com.SunLovers.PriseTheSun.api;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,15 +31,14 @@ public class UsuarioAPI {
     public UsuarioAPI(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
-
-    // Endpoint para cadastrar um novo usuário comum
     @PostMapping("/cadastrar")
+    @Operation(summary = "Cadastrar usuário na plataforma.",
+            description = "Cadastra um novo usuário comum na plataforma. Recebe um objeto UsuarioDTO contendo informações do usuário.")
+
     public ResponseEntity<String> criarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         
         try {
             Usuario usuario = new Usuario();
-            //System.out.println("INIIIIIIIIIICIO DEBUG");
-            //System.err.println(usuarioDTO.toString());
             usuario.atualizarUsuario(
                 usuarioDTO.getNome(),
                 usuarioDTO.getSenha(),
@@ -52,6 +53,8 @@ public class UsuarioAPI {
     }
 
     @GetMapping("/todosUsuarios")
+    @Operation(summary = "Obter lista com todos os usuários na plataforma.",
+            description = "Retorna uma lista contendo todos os usuários cadastrados na plataforma.")
     public ResponseEntity<List<Usuario>> obterTodosUsuarios() {
         List<Usuario> usuarios = usuarioService.obterTodosUsuarios();
         if (usuarios.isEmpty()) {
@@ -61,7 +64,11 @@ public class UsuarioAPI {
         }
     }
 
-     @GetMapping("/validarUsuario")
+    @GetMapping("/validarUsuario")
+    @Operation(summary = "Validar login do usuário na plataforma",
+            description = "Valida as credenciais do usuário (CPF e senha) para login na plataforma.")
+    @Parameter(description = "CPF do usuário", required = true)
+    @Parameter(description = "Senha do usuário", required = true)
     public ResponseEntity<String> validarUsuario(@RequestParam String cpf,@RequestParam String senha) {
     boolean resposta = usuarioService.ValidarUsuario(cpf, senha);
     if (resposta == true) {

@@ -4,6 +4,11 @@ package com.SunLovers.PriseTheSun.api;
 import java.net.URI;
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +41,8 @@ public class EdicaoAPI {
     }
 
     @PostMapping("/cadastrarEdicao")
+    @Operation(summary = "Criar edição para um evento específico",
+            description = "Cria uma nova edição para um evento existente. A URI da nova edição é gerada e retornada em caso de sucesso.")
     public ResponseEntity<String> criarEdicaoParaEvento(
             @PathVariable int eventoId,
             @RequestBody EdicaoDTO edicaoDTO) {
@@ -62,6 +69,12 @@ public class EdicaoAPI {
     }
 
     @GetMapping("/{edicaoId}")
+    @Operation(summary = "Obter detalhes de uma edição específica",
+            description = "Retorna os detalhes da edição identificada pelo ID fornecido, associada ao evento especificado pelo eventoId.")
+    @ApiResponse(responseCode = "200", description = "Detalhes da edição obtidos com sucesso",
+            content = @Content(mediaType = "application/json",
+                    examples = @ExampleObject(value = "{\"numero\": 1, \"ano\": 2021, \"dataInicial\": \"2021-01-01\", \"dataFinal\": \"2021-01-10\", \"cidade\": \"Cidade Exemplo\"}"),
+                    schema = @Schema(implementation = EdicaoDTO.class)))
     public ResponseEntity<EdicaoDTO> obterDetalhesEdicao(
             @PathVariable long eventoId,
             @PathVariable long edicaoId) {
@@ -79,5 +92,4 @@ public class EdicaoAPI {
         return ResponseEntity.status(HttpStatus.OK).body(edicaoDTO);
     }
 
-    // Implemente outros métodos conforme necessário
 }
