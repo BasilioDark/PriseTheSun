@@ -4,6 +4,8 @@ Projeto de implementação de uma API Rest feito para a disciplina Desenvolvimen
 
 ## Integrantes do grupo:
 
+<img src="https://gifdb.com/images/high/pikachu-hello-greetings-ysf1v96iox1fo716.gif" width=400>
+
 * Andre Balbi
 * Apollo Marques
 * Daniele Pimenta
