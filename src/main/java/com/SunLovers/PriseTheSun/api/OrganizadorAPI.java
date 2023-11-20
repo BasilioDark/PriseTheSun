@@ -1,4 +1,5 @@
 package com.SunLovers.PriseTheSun.api;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,7 @@ public class OrganizadorAPI {
     }
 
     @PostMapping("/{usuarioID}/atribuirEdicao")
+    @Operation(summary = "Atribui um usuário(usuárioID) a edição de um evento, o elegendo a organizador. ")
     public ResponseEntity<String> atribuirEdicao(@PathVariable("usuarioID") Long usuarioID,@RequestParam("Edicao_Id") long edicaoID) {
         Organizador organizador = organizadorService.getOrganizador(usuarioID);
         if (usuarioService.getUsuario(usuarioID) == null) {return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario não encontrado");}
@@ -50,6 +52,7 @@ public class OrganizadorAPI {
         
     }
      @GetMapping("/{organizadorID}")
+     @Operation(summary = "Obtém organizador pelo ID")
     public ResponseEntity<?> getOrganizadorById(@PathVariable("organizadorID") Long organizadorID) {
         Organizador organizador = organizadorService.getOrganizador(organizadorID);
         if (organizador == null) {return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Organizador não encontrado");}
