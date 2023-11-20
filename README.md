@@ -24,6 +24,7 @@ Para iniciar o projeto em seu computador, é necessário instalar pelas extensõ
 * Spring Boot Extension Pack
 
 ## Links úteis
+* [Enunciado do projeto](https://drive.google.com/file/d/1BLhyjlwFKVAfvPmNgiJGg90Gk0V_7a-q/view?hl=pt-BR)
 * [Documentação interativa das API](http://localhost:8080/swagger-ui/index.html)
 * [Acessar o site principal](http://localhost:8080/)
 
