@@ -29,7 +29,7 @@ import com.SunLovers.PriseTheSun.service.EventoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/evento/{eventoId}/edicao")
+@RequestMapping("/eventos/{eventoId}/edicao")
 @Tag(name = "Edições", description = "Operações relacionadas a edições")
 public class EdicaoAPI {
     private final EdicaoService edicaoService;
