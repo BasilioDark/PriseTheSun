@@ -1,5 +1,6 @@
 package com.SunLovers.PriseTheSun.service;
 
+import com.SunLovers.PriseTheSun.dto.AtividadeDTO;
 import com.SunLovers.PriseTheSun.model.Atividade;
 import com.SunLovers.PriseTheSun.repository.AtividadeRepository;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,11 @@ public class AtividadeService {
 
     public Atividade getAtividadeById(Long id) {
         return atividadeRepository.findById(id).orElse(null);
+    }
+
+    public AtividadeDTO getAtividadeSimplificadaById(Long id){
+        Atividade atividade = atividadeRepository.findById(id).orElse(null);
+        return new AtividadeDTO(atividade);
     }
 
     public Atividade saveAtividade(Atividade atividade) {

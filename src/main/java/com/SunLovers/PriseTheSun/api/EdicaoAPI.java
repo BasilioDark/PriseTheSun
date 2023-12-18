@@ -57,7 +57,17 @@ public class EdicaoAPI {
                 edicaoDTO.getNumero(),
                 edicaoDTO.getAno(),
                 edicaoDTO.getDataInicial(),
-                edicaoDTO.getDataFinal(), edicaoDTO.getCidade(), evento);
+                edicaoDTO.getDataFinal(),
+                edicaoDTO.getCidade(),
+                edicaoDTO.getChamadaTrabalhos(),
+                edicaoDTO.getDataLimiteSubmissao(),
+                edicaoDTO.getDataDivulgacaoTrabalhos(),
+                edicaoDTO.getDataEntregaFinal(),
+                edicaoDTO.getInformacoesInscricoes(),
+                edicaoDTO.getPrecoLote1(),
+                edicaoDTO.getPrecoLote2(),
+                edicaoDTO.getLinkInscricoes(),
+                evento);
         edicao = edicaoService.salvarEdicao(edicao);
 
         URI location = ServletUriComponentsBuilder
@@ -87,7 +97,15 @@ public class EdicaoAPI {
                 edicao.getAno(),
                 edicao.getDataInicial(),
                 edicao.getDataFinal(),
-                edicao.getCidade());
+                edicao.getCidade(),
+                edicao.getChamadaTrabalhos(),
+                edicao.getDataLimiteSubmissao(),
+                edicao.getDataDivulgacaoTrabalhos(),
+                edicao.getDataEntregaFinal(),
+                edicao.getInformacoesInscricoes(),
+                edicao.getPrecoLote1(),
+                edicao.getPrecoLote2(),
+                edicao.getLinkInscricoes());
 
         return ResponseEntity.status(HttpStatus.OK).body(edicaoDTO);
     }

@@ -1,5 +1,6 @@
 package com.SunLovers.PriseTheSun.api;
 
+import com.SunLovers.PriseTheSun.dto.AtividadeDTO;
 import com.SunLovers.PriseTheSun.model.Atividade;
 import com.SunLovers.PriseTheSun.service.AtividadeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,6 +31,12 @@ public class AtividadeAPI {
     @Operation(summary = "Obter uma atividade pelo ID")
     public Atividade getAtividadeById(@PathVariable Long id) {
         return atividadeService.getAtividadeById(id);
+    }
+
+    @GetMapping("/simplificada/{id}")
+    @Operation(summary = "Obter uma atividade simplificada pelo ID")
+    public AtividadeDTO getAtividadeSimplificadaById(@PathVariable Long id) {
+        return atividadeService.getAtividadeSimplificadaById(id);
     }
 
     @PostMapping
