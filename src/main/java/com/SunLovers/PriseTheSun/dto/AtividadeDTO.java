@@ -7,7 +7,7 @@ public class AtividadeDTO {
     private Long id;
     private String nome;
     private TipoAtividade tipo;
-    private String descricao;
+
     private String data;
     private String horarioInicial;
     private String horarioFinal;
@@ -16,7 +16,6 @@ public class AtividadeDTO {
         this.id = atividade.getId();
         this.nome = atividade.getNome();
         this.tipo = atividade.getTipo();
-        this.descricao = atividade.getDescricao();
         this.data = atividade.getData().toString();
         this.horarioInicial = atividade.getHorarioInicial().toString();
         this.horarioFinal = atividade.getHorarioFinal().toString();
@@ -44,14 +43,6 @@ public class AtividadeDTO {
 
     public void setTipo(TipoAtividade tipo) {
         this.tipo = tipo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public String getData() {
