@@ -17,7 +17,7 @@ import com.SunLovers.PriseTheSun.service.UsuarioService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("usuario")
 @Tag(name = "Usuarios", description = "Operações relacionadas aos usuarios")
 public class UsuarioAPI {
 
@@ -28,7 +28,7 @@ public class UsuarioAPI {
         this.usuarioService = usuarioService;
         this.favoriteService = favoriteService;
     }
-    @PostMapping("/cadastrar")
+    @PostMapping
     @Operation(summary = "Cadastrar usuário na plataforma.",
             description = "Cadastra um novo usuário comum na plataforma. Recebe um objeto UsuarioDTO contendo informações do usuário.")
 
@@ -49,7 +49,7 @@ public class UsuarioAPI {
         }
     }
 
-    @GetMapping("/todosUsuarios")
+    @GetMapping
     @Operation(summary = "Obter lista com todos os usuários na plataforma.",
             description = "Retorna uma lista contendo todos os usuários cadastrados na plataforma.")
     public ResponseEntity<List<Usuario>> obterTodosUsuarios() {

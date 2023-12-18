@@ -29,7 +29,7 @@ import com.SunLovers.PriseTheSun.service.EventoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/eventos/{eventoId}/edicao")
+@RequestMapping("edicao")
 @Tag(name = "Edições", description = "Operações relacionadas a edições")
 public class EdicaoAPI {
     private final EdicaoService edicaoService;
@@ -40,7 +40,7 @@ public class EdicaoAPI {
         this.eventoService = eventoService;
     }
 
-    @PostMapping("/cadastrarEdicao")
+    @PostMapping("/cadastro/{eventoId}")
     @Operation(summary = "Criar edição para um evento específico",
             description = "Cria uma nova edição para um evento existente. A URI da nova edição é gerada e retornada em caso de sucesso.")
     public ResponseEntity<String> criarEdicaoParaEvento(
