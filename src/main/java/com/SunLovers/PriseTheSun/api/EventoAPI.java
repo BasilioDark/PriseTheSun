@@ -16,7 +16,7 @@ import com.SunLovers.PriseTheSun.service.EventoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/evento")
+@RequestMapping("/eventos")
 @Tag(name = "Eventos", description = "Operações relacionadas a eventos")
 public class EventoAPI {
     private final EventoService eventoService;
@@ -25,7 +25,7 @@ public class EventoAPI {
     public EventoAPI(EventoService eventoService) {
         this.eventoService = eventoService;
     }
-    @PostMapping("/cadastrarEvento")
+    @PostMapping
     @Operation(summary = "Cadastra um novo Evento")
     public ResponseEntity<String> cadastrarEvento(@RequestBody EventoDTO eventoDTO) {
             // Verifica se o evento já existe (pode ser feita uma lógica de verificação aqui)
@@ -39,9 +39,8 @@ public class EventoAPI {
                 return ResponseEntity.status(HttpStatus.CREATED).body("Evento Cadastrado com Sucesso");
             }
         }
-    @GetMapping("/listarEventos")
+    @GetMapping
     @Operation(summary = "Lista todos os eventos cadastrados")
-
     public ResponseEntity<List<EventoDTO>> listarEventos() {
         List<EventoDTO> eventosDTO = eventoService.listarEventos();
 

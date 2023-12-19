@@ -1,6 +1,8 @@
 package com.SunLovers.PriseTheSun.model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalTime;
 import java.util.Date;
 
 import java.sql.Time;
@@ -25,18 +27,18 @@ public class Atividade {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date data;
-    
+
     @Column(nullable = false)
-    private Time horarioInicial;
-    
+    private LocalTime horarioInicial;
+
     @Column(nullable = false)
-    private Time horarioFinal;
+    private LocalTime horarioFinal;
 
     @ManyToOne
     @JoinColumn(name = "edicao_id")
     private Edicao edicao;
     
-        @OneToOne(mappedBy = "atividade", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "atividade", cascade = CascadeType.ALL, orphanRemoval = true)
     private Espaco espaco;
     public Long getId() {
         return id;
@@ -78,19 +80,19 @@ public class Atividade {
         this.data = data;
     }
 
-    public Time getHorarioInicial() {
+    public LocalTime getHorarioInicial() {
         return horarioInicial;
     }
 
-    public void setHorarioInicial(Time horarioInicial) {
+    public void setHorarioInicial(LocalTime horarioInicial) {
         this.horarioInicial = horarioInicial;
     }
 
-    public Time getHorarioFinal() {
+    public LocalTime getHorarioFinal() {
         return horarioFinal;
     }
 
-    public void setHorarioFinal(Time horarioFinal) {
+    public void setHorarioFinal(LocalTime horarioFinal) {
         this.horarioFinal = horarioFinal;
     }
 

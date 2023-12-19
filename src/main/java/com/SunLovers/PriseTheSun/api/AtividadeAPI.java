@@ -5,6 +5,8 @@ import com.SunLovers.PriseTheSun.model.Atividade;
 import com.SunLovers.PriseTheSun.service.AtividadeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -39,8 +41,19 @@ public class AtividadeAPI {
 
     @PostMapping
     @Operation(summary = "Criar uma nova atividade")
-    public Atividade createAtividade(@RequestBody Atividade atividade) {
-        return atividadeService.saveAtividade(atividade);
+    public ResponseEntity<?> createAtividade(@RequestBody Atividade atividade) {
+        try {
+            Atividade savedAtividade = atividadeService.saveAtividade(atividade);
+            return ResponseEntity.ok(savedAtividade);
+        } catch (Exception e) {
+            // Log the exception for internal debugging
+            e.printStackTrace(); // Ideally, use a logger
+
+            // Return a more informative error message
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao criar atividade: " + e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
